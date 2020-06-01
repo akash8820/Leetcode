@@ -1,0 +1,22 @@
+class Solution {
+    public String destCity(List<List<String>> paths) {
+        
+		String destination = null, currentCity = null;
+		Map<String, String> map = new HashMap<>();
+		for (int i = 0; i < paths.size(); i++) {
+			if (map.isEmpty())
+				currentCity = paths.get(i).get(0);
+			map.put(paths.get(i).get(0), paths.get(i).get(1));
+		}
+
+		while (map.containsKey(currentCity))
+			currentCity = map.get(currentCity);
+
+		destination = currentCity;
+
+		return destination;
+
+	
+        
+    }
+}
