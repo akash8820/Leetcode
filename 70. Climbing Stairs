@@ -1,0 +1,16 @@
+class Solution {
+    public int climbStairs(int n) {
+
+		return findStairCost(n);
+
+	}
+
+	private int findStairCost(int n) {
+
+		if (n <= 1)
+			return 1;
+
+		return findStairCost(n - 1) + findStairCost(n - 2);
+	}
+
+    }
