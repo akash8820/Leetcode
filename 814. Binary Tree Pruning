@@ -1,0 +1,35 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+
+	public TreeNode pruneTree(TreeNode root) {
+		if (root == null)
+			return null;
+		containsOne(root);
+		return root;
+
+	}
+
+	private boolean containsOne(TreeNode root) {
+		if (root == null)
+			return false;
+		boolean containleft = containsOne(root.left);
+		boolean containright = containsOne(root.right);
+
+		if (!containleft)
+			root.left = null;
+		if (!containright)
+			root.right = null;
+
+		return root.val == 1 || containleft || containright;
+
+	}
+
+}
